@@ -1,0 +1,29 @@
+package com.narxoz.rpg.combat.fire;
+
+import com.narxoz.rpg.combat.Ability;
+
+public class FlameBreath implements Ability {
+
+    private final String name = "Flame Breath";
+    private final int damage = 120;
+
+    @Override
+    public String getName() { return name; }
+
+    @Override
+    public int getDamage() { return damage; }
+
+    @Override
+    public String getDescription() {
+        return "Breathes fire dealing AoE damage and burn effect.";
+    }
+
+    @Override
+    public Ability clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
