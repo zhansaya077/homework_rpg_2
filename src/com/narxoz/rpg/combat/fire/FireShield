@@ -1,0 +1,31 @@
+import com.narxoz.rpg.combat.Ability;
+
+public class FireShield implements Ability {
+
+    private final String name = "Fire Shield";
+    private final int damage = 0; 
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Creates a protective shield of fire that reduces incoming damage.";
+    }
+
+    @Override
+    public Ability clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
