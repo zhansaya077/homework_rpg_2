@@ -1,0 +1,37 @@
+package com.narxoz.rpg.loot.shadow;
+
+import com.narxoz.rpg.loot.LootTable;
+import java.util.List;
+
+public class ShadowLootTable implements LootTable {
+
+    private final List<String> items =
+            List.of("Shadow Gem", "Dark Essence", "Shadow Rune");
+
+    private final int gold = 550;
+    private final int experience = 1100;
+
+    @Override
+    public List<String> getItems() {
+        return items;
+    }
+
+    @Override
+    public int getGoldDrop() {
+        return gold;
+    }
+
+    @Override
+    public int getExperienceDrop() {
+        return experience;
+    }
+
+    @Override
+    public LootTable clone() {
+        try {
+            return (LootTable) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
