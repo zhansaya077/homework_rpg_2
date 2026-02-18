@@ -1,0 +1,33 @@
+package com.narxoz.rpg.combat.shadow;
+
+import com.narxoz.rpg.combat.Ability;
+
+public class ShadowStrike implements Ability {
+
+    private final String name = "Shadow Strike";
+    private final int damage = 130;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Strikes from the shadows dealing high single-target damage.";
+    }
+
+    @Override
+    public Ability clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
