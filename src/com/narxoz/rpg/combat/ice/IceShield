@@ -1,0 +1,33 @@
+package com.narxoz.rpg.combat.ice;
+
+import com.narxoz.rpg.combat.Ability;
+
+public class IceShield implements Ability {
+
+    private final String name = "Ice Shield";
+    private final int damage = 0;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Creates a shield of ice that increases defense.";
+    }
+
+    @Override
+    public Ability clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
