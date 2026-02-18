@@ -1,0 +1,121 @@
+package com.narxoz.rpg.builder;
+
+import com.narxoz.rpg.enemy.DragonBoss;
+import com.narxoz.rpg.enemy.Enemy;
+import com.narxoz.rpg.combat.Ability;
+import com.narxoz.rpg.loot.LootTable;
+import com.narxoz.rpg.factory.EnemyComponentFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BossEnemyBuilder {
+
+    private String name;
+    private int health;
+    private int damage;
+    private int defense;
+    private int speed;
+    private String element;
+
+    private List<Ability> abilities = new ArrayList<>();
+
+    private int phase1;
+    private int phase2;
+    private int phase3;
+
+    private LootTable lootTable;
+    private String aiBehavior;
+
+    private boolean canFly;
+    private boolean hasBreathAttack;
+    private int wingspan;
+
+  
+    private EnemyComponentFactory componentFactory;
+
+    public BossEnemyBuilder setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public BossEnemyBuilder setHealth(int health) {
+        this.health = health;
+        return this;
+    }
+
+    public BossEnemyBuilder setDamage(int damage) {
+        this.damage = damage;
+        return this;
+    }
+
+    public BossEnemyBuilder setDefense(int defense) {
+        this.defense = defense;
+        return this;
+    }
+
+    public BossEnemyBuilder setSpeed(int speed) {
+        this.speed = speed;
+        return this;
+    }
+
+    public BossEnemyBuilder setElement(String element) {
+        this.element = element;
+        return this;
+    }
+
+    public BossEnemyBuilder setPhases(int phase1, int phase2, int phase3) {
+        this.phase1 = phase1;
+        this.phase2 = phase2;
+        this.phase3 = phase3;
+        return this;
+    }
+
+    public BossEnemyBuilder setCanFly(boolean canFly) {
+        this.canFly = canFly;
+        return this;
+    }
+
+    public BossEnemyBuilder setHasBreathAttack(boolean hasBreathAttack) {
+        this.hasBreathAttack = hasBreathAttack;
+        return this;
+    }
+
+    public BossEnemyBuilder setWingspan(int wingspan) {
+        this.wingspan = wingspan;
+        return this;
+    }
+
+  
+    public BossEnemyBuilder setComponentFactory(EnemyComponentFactory factory) {
+        this.componentFactory = factory;
+        return this;
+    }
+
+    public Enemy build() {
+
+        if (componentFactory != null) {
+            this.abilities = componentFactory.createAbilities();
+            this.lootTable = componentFactory.createLootTable();
+            this.aiBehavior = componentFactory.createAIBehavior();
+        }
+
+        return new DragonBoss(
+                name,
+                health,
+                damage,
+                defense,
+                speed,
+                element,
+                abilities,
+                phase1,
+                phase2,
+                phase3,
+                lootTable,
+                aiBehavior,
+                canFly,
+                hasBreathAttack,
+                wingspan
+        );
+    }
+}
