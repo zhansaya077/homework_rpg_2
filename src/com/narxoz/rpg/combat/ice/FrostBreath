@@ -1,0 +1,33 @@
+package com.narxoz.rpg.combat.ice;
+
+import com.narxoz.rpg.combat.Ability;
+
+public class FrostBreath implements Ability {
+
+    private final String name = "Frost Breath";
+    private final int damage = 100;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Breathes icy wind dealing damage and slowing enemies.";
+    }
+
+    @Override
+    public Ability clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
